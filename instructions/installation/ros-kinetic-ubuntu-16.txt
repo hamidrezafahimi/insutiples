@@ -1,0 +1,107 @@
+
+1)step 1 ROS Installation
+# Setup your sources.list
+		$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+# Set up your keys
+		$ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+
+# Installation
+		$ sudo apt-get update
+		$ sudo apt-get install ros-kinetic-desktop-full
+		$ sudo rosdep init
+		$ rosdep update
+		$ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+		$ source ~/.bashrc
+		$ sudo apt install ros-kinetic-joy -y
+		$ sudo apt install ros-kinetic-image-view -y
+
+
+
+2)step 2 ##mavros installation
+		$ sudo apt-get install ros-kinetic-mavros ros-kinetic-mavros-extras
+		$ wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
+		$ ./install_geographiclib_datasets.sh																																								##The geoid might be asked. 
+
+3)step 3
+# PX4 package installation on Ubuntu 16.04
+# Requirements: ROS Kinetics and Gazebo 7 ##########
+# Please follow the steps bellow one by one and make sure all of them succeed.
+# Ubuntu Config
+# We must first remove modemmanager
+    $ sudo apt-get remove modemmanager -y
+
+# Installing common dependencies"
+    $ sudo apt-get update -y
+    $ sudo apt-get install git zip qtcreator cmake build-essential genromfs ninja-build exiftool astyle -y
+
+
+# Make sure xxd is installed, dedicated xxd package since Ubuntu 18.04 but was squashed into vim-common before
+    $ which xxd || sudo apt install xxd -y || sudo apt-get install vim-common --no-install-recommends -y
+
+# Required python packages installation
+    $ sudo apt-get install python-argparse python-empy python-toml python-numpy python-dev python-pip -y
+    $ sudo -H pip install --upgrade pip
+    $ sudo -H pip install pandas jinja2 pyserial pyyaml
+
+# Optional python tools installation
+    $ sudo -H pip install pyulog
+
+# Install FastRTPS 1.7.1 and FastCDR-1.0.8
+
+    $ pushd .
+    $ cd ~
+    $ wget https://www.eprosima.com/index.php/component/ars/repository/eprosima-fast-rtps/eprosima-fast-rtps-1-7-1/eprosima_fastrtps-1-7-1-linux-tar-gz -O eprosima_fastrtps-1-7-1-linux.tar.gz
+    $ tar -xzf eprosima_fastrtps-1-7-1-linux.tar.gz eProsima_FastRTPS-1.7.1-Linux/
+    $ tar -xzf eprosima_fastrtps-1-7-1-linux.tar.gz requiredcomponents
+    $ tar -xzf requiredcomponents/eProsima_FastCDR-1.0.8-Linux.tar.gz
+    $ cpucores=$(( $(lscpu | grep Core.*per.*socket | awk -F: '{print $2}') * $(lscpu | grep Socket\(s\) | awk -F: '{print $2}') ))
+    $ (cd eProsima_FastCDR-1.0.8-Linux && ./configure --libdir=/usr/lib && make -j$cpucores && sudo make install)
+    $ (cd eProsima_FastRTPS-1.7.1-Linux && ./configure --libdir=/usr/lib && make -j$cpucores && sudo make install)
+    $ rm -rf requiredcomponents eprosima_fastrtps-1-7-1-linux.tar.gz
+    $ popd
+
+# Installing jMAVSim simulator dependencies
+    $ sudo apt-get install ant openjdk-8-jdk openjdk-8-jre -y
+
+# Create WorkSpace and clone package from github
+    $ mkdir -p px4_ws/src
+    $ cd px4_ws/src
+    $ git clone https://github.com/PX4/Firmware.git
+
+# To build an example setup, follow the steps below:
+# Clone the PX4/Firmware code, then build the SITL code
+    $ cd px4_ws
+    $ source devel/setup.bash
+    $ cd src/Firmware
+    $ git submodule update --init --recursive
+    $ DONT_RUN=1 make px4_sitl_default gazebo
+    $ cd ../..
+    $ catkin build
+
+
+
+
+2)step 4	##Each time running 
+	
+    $ cd px4_ws
+    $ source devel/setup.bash
+		$ cd src/Firmware
+
+# Source your environment:
+    $ source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+    $ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd):$(pwd)/Tools/sitl_gazebo
+
+
+# Run launch file: this launch file spawns 3 quadrotors in simulation
+    $ roslaunch px4 multi_uav_mavros_sitl.launch
+# Run launch file: this launch file spawns 1 quadrotor in simulation
+    $ roslaunch px4 uav_mavros_sitl.launch
+
+
+
+
+
+
+
+
