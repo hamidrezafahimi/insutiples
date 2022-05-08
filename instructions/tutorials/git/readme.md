@@ -27,6 +27,15 @@ git config user.name "<username>"
 git config user.email "<email>"
 ```
 
+#### Reomve the current user info in command-line
+
+In order to correctly introduce the account which is commiting to the git.
+
+```
+git config --unset user.name "<username>"
+git config --unset user.email "<email>"
+```
+
 #### Get the last changes
 
 Including added or un-added files.
@@ -159,3 +168,24 @@ git reset --hard
 ```
 gitk
 ```
+
+#### Create an automaticly updating todo list (before each commit):
+In the root of repo:
+```
+cd .git/hooks/
+```
+(For windows) Create a file named: **pre-commit**. Then put the followings inside it:
+```
+#!/bin/bash
+
+git grep --heading -n TODO > TODO.txt
+```
+
+(For Linux - probably!) Create a file named: **pre-commit**. Then put the followings inside it:
+```
+#!/bin/sh
+
+git grep --heading -n TODO > TODO.txt
+```
+  
+  
