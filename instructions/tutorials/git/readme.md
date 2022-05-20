@@ -179,6 +179,7 @@ cd .git/hooks/
 #!/bin/bash
 
 git grep --heading -n TODO > TODO.txt
+git add TODO.txt
 ```
 
 (For Linux - probably!) Create a file named: **pre-commit**. Then put the followings inside it:
@@ -186,6 +187,32 @@ git grep --heading -n TODO > TODO.txt
 #!/bin/sh
 
 git grep --heading -n TODO > TODO.txt
+git add TODO.txt
 ```
   
+#### Create a mirror (non-fork copy) of a repo:
+  Open Git Bash.
+Create a bare clone of the repository.
+  ```
+git clone --bare https://github.com/exampleuser/old-repository.git
+  ```
+Mirror-push to the new repository.
+  ```
+cd old-repository.git
+git push --mirror https://github.com/exampleuser/new-repository.git
+  ```
+Remove the temporary local repository you created earlier.
+  ```
+  cd ..
+rm -rf old-repository.git
+```
+   
+  
+#### Merge into a branch:
+```
+cd path/to/project-b
+git remote add project-a /path/to/project-a
+git fetch project-a --tags
+git merge --allow-unrelated-histories project-a/master
+```
   
