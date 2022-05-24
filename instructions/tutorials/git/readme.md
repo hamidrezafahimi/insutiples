@@ -65,13 +65,13 @@ git commit -m "<commit msg>"
 git push <remote> <branch>
 ```
 
+### Remotes
 
-#### Getting the list of remotes
+#### Getting a list of remotes
 
 ```
 git remote -v
 ```
-
 
 #### Adding a remote
 
@@ -85,7 +85,8 @@ git remote add <remoteName> <https://...remoteAddress.git>
 git remote rm <remote>
 ```
 
-
+### Pulling
+  
 #### Fetching a remote (before pulling it)
 
 ```
@@ -99,13 +100,35 @@ git fetch <remote>
 git pull <remote> <branch>
 ```
 
+### Commits and monitoring
 
-#### Get the brief list of commits in the current branch
+#### Get a commit list
 
+To get just a brief list of commits in the current branch:
+  
 ```
 git log --oneline
 ```
 
+To get the list along with a working hostory tree:
+
+```
+git log --oneline --graph
+```
+#### Git visualizer
+
+To monitor just the current branch:
+
+```
+gitk
+```
+
+To monitor just all the branches:
+
+```
+gitk --all
+```
+  
 #### Go to a specific commit
 
 ```
@@ -119,6 +142,16 @@ git rev-parse --abbrev-ref HEAD
 ```
 
 If the output is head, then you'r on no branch.
+
+
+### Branch
+#### Create a new branch
+  
+To have a new branch starting from the current commit:
+
+```
+git branch <branch-name>
+```
 
 #### Go to a specific branch
 
@@ -148,6 +181,8 @@ git branch -D <branch>
 git push <remote> --delete <branch>
 ```
 
+### Config
+  
 #### Set the default editor for git
 
 Used in tools such as rebase.
@@ -161,12 +196,6 @@ git config --global core.editor "<editor-name>"
 
 ```
 git reset --hard
-```
-
-#### Git visualizer
-
-```
-gitk
 ```
 
 #### Create an automaticly updating todo list (before each commit):
