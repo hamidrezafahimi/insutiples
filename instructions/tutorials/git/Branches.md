@@ -16,6 +16,14 @@ To have a new branch starting from the current commit:
 git branch <branch-name>
 ```
 
+
+#### Go to a specific branch
+
+```
+git checkout <branch-name>
+```
+
+
 #### Edit (remove, rename, mix, ...) commits of a branch
 
 ```
@@ -37,3 +45,17 @@ git branch -D <branch>
 git push <remote> --delete <branch>
 ```
 
+
+## Visualizer
+
+To monitor just the current branch:
+
+```
+gitk
+```
+
+To monitor just all the branches:
+
+```
+gitk --all
+```
