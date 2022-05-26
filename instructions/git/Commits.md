@@ -34,7 +34,16 @@ Short version:
 git rev-parse --short HEAD
 ```
 
-#### Delete the last commits
+#### Delete the last changes
+
+To delete the last uncommited changes: 
+
+```
+git reset --hard
+```
+
+
+To delete the last commits: 
 
 ```
 git reset --hard HEAD~<num-of-last-commits-to-be-deleted>

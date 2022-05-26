@@ -2,8 +2,9 @@
 
 #### Create a conda environment
 
-
-
+```
+conda create --name <env-name> python=<desired-python-version>
+```
 
 #### Activating a conda environment
 

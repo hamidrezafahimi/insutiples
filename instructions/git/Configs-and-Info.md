@@ -35,4 +35,10 @@ Used in tools such as rebase.
 ```
 git config --global core.editor "<editor-name>"
 ```
-	
+
+
+#### Counting the size and number of repo objects
+
+```
+git count-objects -v
+```

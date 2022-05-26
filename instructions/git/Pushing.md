@@ -33,3 +33,12 @@ Push all the branches to a remote:
 git push --all <remote>
 ```
 
+
+#### Cancelling add
+
+```
+git reset .
+```
+
+
+
