@@ -5,29 +5,9 @@ https://www.youtube.com/watch?v=whAFl-izD-4
 
 1. Download and apply your proper graphics driver
 
-2. Download and install cuda:
-
-Go to the nvidia site. Find the proper cuda version for your GPU and OS version. 
-Download it.
-Install it using:
-
-Don't use the following commands. Nvidia site gives you the propers for your case which you have determined.
-
-```
-dpkg -i <cuda-file.deb>
-<The proper command for GPG key>
-sudo apt-get update
-<installation command>
-```
+2. Download and install cuda
 
 3. Download and install cuDNN
-
-Go to the nvidia site. Find the proper cudnn version for your GPU and OS version. 
-Download it.
-Install it using the proper commands as given in:
-
-https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
-
 
 4. Create an <OpenCV-root> folder. Inside it, clone the both source codes for 'opencv' and 'opencv_contrib' from the main 'opencv' account in github. In the <OpenCV-root>, create a <build> folder named 'build'.
 
@@ -47,26 +27,114 @@ The flags that must be set are then shown in red.
 
 Set the following arguments:
 
+- **extra modules flag:**
+
 OPENCV_EXTRA_MODULES_PATH   --->   the/path/to/opencv_contrib/modules
+
+- **cuda flags:**
+
 OPENCV_DNN_CUDA    --->     ON
 WITH_CUDA    --->     ON
 
-For the rest, I did:
+
+- **for the 'PYTHON3_EXECUTABLE' flag**, run in a terminal:
+
+```
+which python3
+```
+
+So I did:
 
 PYTHON3_EXECUTABLE --->    /usr/bin/python3
+
+- **for the 'PYTHON3_INCLUDE_DIR' flag**, run in a terminal:
+
+```
+python3
+```
+
+Then run the following script:
+
+```
+from sysconfig import get_paths
+from pprint import pprint
+pprint(get_paths())
+```
+You'll be shown something like this:
+
+```
+{'data': '/usr',
+ 'include': '/usr/include/python3.8',
+ 'platinclude': '/usr/include/python3.8',
+ 'platlib': '/usr/lib/python3.8/site-packages',
+ 'platstdlib': '/usr/lib/python3.8',
+ 'purelib': '/usr/lib/python3.8/site-packages',
+ 'scripts': '/usr/bin',
+ 'stdlib': '/usr/lib/python3.8'}
+```
+
+Set the address in front of 'include' for the flag. 
+
+So I did:
+
 PYTHON3_INCLUDE_DIR --->    /usr/include/python3.8
-PYTHON3_LIBRARY --->    /usr/lib/x86_64-linux-gnu/libpython3.8.so
-PYTHON3_NUMPY_INCLUDE_DIRS --->    /usr/lib/python3/dist-packages/numpy/core/include
-PYTHON3_PACKAGES_PATH --->    /usr/lib/python3/dist-packages
+
+
+- **For the 'PYTHON3_LIBRARY'** flag, run:
+
+```
+sudo find / -name "libpython*.so"
+```
+
+You'll be shown the python library files. Choose the one under the '/usr/lib' and with your python version (the one that is given in the terminal when you run the '$python3' command). Copy its path and set it for the flag.
+
+So I did:
+
+PYTHON3_LIBRARY --->  	/usr/lib/python3.8/config-3.8-x86_64-linux-gnu/libpython3.8.so
+
+- **for the 'PYTHON3_NUMPY_INCLUDE_DIRS' flag**, 
+
+First, in a terminal, install pip and numpy itself:
+
+```
+sudo apt install pip
+
+sudo pip install numpy
+```
+
+Then find numpy like you did before:
+
+```
+sudo find / -name "numpy"
+```
+
+From the output, get copy the address with the '/usr/local/.../include/numpy' format and paste it until before '/numpy' for the flag. 
+
+So I did:
+
+PYTHON3_NUMPY_INCLUDE_DIRS --->    /usr/local/lib/python3.8/dist-packages/numpy/core/include
+
+- **for the 'PYTHON3_PACKAGES_PATH' flag**, the previous address (for numpy) gives you the write address for python packages. Copy it until the end of '/dist-packages' for the flag.
+
+So I did:
+
+PYTHON3_PACKAGES_PATH --->    /usr/local/lib/python3.8/dist-packages
 
 Check the above addresses to be valid in wour case. The video has more details about these stuff.
+
+
+Hit 'Configure'
+
+
+- **The rest of cuda flags**
 
 For the next flag, check the 'cuda' wikipedia page. In the large table, find the version for your graphics card. Also, set the 2nd following flag with the proper generation:
  
 CUDA_ARCH_BIN    --->    (for-my-geforce-950m-it-was-5.0)
 CUDA_GENERATION   --->    (for-me-it-was-Maxwell)
 
-Hit 'Configure'
+
+
 
 8. After configuration is done and you have no red flags, hit 'Generate'
 
