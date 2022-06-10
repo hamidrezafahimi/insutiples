@@ -1,15 +1,23 @@
 
+*IMPORTANT TIP: PLEASE DO NOT try this installation prodecure with 'anaconda' installed. I did it once and it screwed my python paths. The best experience is to do the installation with a fresh ubuntu (mine was 20.04 LTS)*
+
+
 0. For installation guide, refer to the video:
 
 https://www.youtube.com/watch?v=whAFl-izD-4
 
+
 1. Download and apply your proper graphics driver
+
 
 2. Download and install cuda
 
+
 3. Download and install cuDNN
 
+
 4. Create an <OpenCV-root> folder. Inside it, clone the both source codes for 'opencv' and 'opencv_contrib' from the main 'opencv' account in github. In the <OpenCV-root>, create a <build> folder named 'build'.
+
 
 5. In a generall case, install the cmake GUI:
 
@@ -17,24 +25,32 @@ https://www.youtube.com/watch?v=whAFl-izD-4
 sudo apt-get install cmake cmake-gui
 ```
 
+
 6. In the cmake gui, first, set the path to opencv local repository (until '.../opencv') in the 'source' field. Then set the path to '.../build' in the 'build' field.
 
 Hit 'Configure'
 
 The flags that must be set are then shown in red.
 
+
 7. Set some flags:
 
-Set the following arguments:
+Set the following arguments IN ORDER!!:
+
 
 - **extra modules flag:**
 
 OPENCV_EXTRA_MODULES_PATH   --->   the/path/to/opencv_contrib/modules
 
+Hit 'configure'.
+
+
 - **cuda flags:**
 
 OPENCV_DNN_CUDA    --->     ON
 WITH_CUDA    --->     ON
+
+Hit 'configure'.
 
 
 - **for the 'PYTHON3_EXECUTABLE' flag**, run in a terminal:
@@ -46,6 +62,9 @@ which python3
 So I did:
 
 PYTHON3_EXECUTABLE --->    /usr/bin/python3
+
+Hit 'configure'.
+
 
 - **for the 'PYTHON3_INCLUDE_DIR' flag**, run in a terminal:
 
@@ -92,6 +111,7 @@ So I did:
 
 PYTHON3_LIBRARY --->  	/usr/lib/python3.8/config-3.8-x86_64-linux-gnu/libpython3.8.so
 
+
 - **for the 'PYTHON3_NUMPY_INCLUDE_DIRS' flag**, 
 
 First, in a terminal, install pip and numpy itself:
@@ -114,6 +134,7 @@ So I did:
 
 PYTHON3_NUMPY_INCLUDE_DIRS --->    /usr/local/lib/python3.8/dist-packages/numpy/core/include
 
+
 - **for the 'PYTHON3_PACKAGES_PATH' flag**, the previous address (for numpy) gives you the write address for python packages. Copy it until the end of '/dist-packages' for the flag.
 
 So I did:
@@ -129,14 +150,16 @@ Hit 'Configure'
 - **The rest of cuda flags**
 
 For the next flag, check the 'cuda' wikipedia page. In the large table, find the version for your graphics card. Also, set the 2nd following flag with the proper generation:
- 
-CUDA_ARCH_BIN    --->    (for-my-geforce-950m-it-was-5.0)
+
 CUDA_GENERATION   --->    (for-me-it-was-Maxwell)
 
-
+*NOTE: The above flag is enough. If you hit configure now, the following will be set properly.*
+ 
+CUDA_ARCH_BIN    --->    (for-my-geforce-950m-it-was-5.0)
 
 
 8. After configuration is done and you have no red flags, hit 'Generate'
+
 
 9. Go to the <build> folder. Start the building:
 
@@ -145,6 +168,7 @@ In the following, I set -j7 to use 7 CPU cores in building procedure
 ```
 make -j7
 ```
+
 
 10. In the <build> directory:
 

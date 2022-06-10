@@ -1,6 +1,8 @@
 
 ## graphics driver
 
+Get a list of your available drivers:
+
 ```
 ubuntu-drivers devices
 ```
@@ -162,7 +164,7 @@ https://developer.nvidia.com/rdp/cudnn-download
 
 There, find your suitable cuDNN version (based on your cuda version). Download it. Install it in by running the following command in folder the file is in
 
-In the following, after 'sudo dpkg -i', hit 'tab' so the your present version is installed.
+In the following, after 'sudo dpkg -i', hit 'tab' so the your present version is unpacked.
 
 ```
 sudo dpkg -i cudnn-local-repo-ubuntu2004-8.4.1.50_1.0-1_amd64.deb 
@@ -171,6 +173,23 @@ sudo dpkg -i cudnn-local-repo-ubuntu2004-8.4.1.50_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2004-8.4.1.50/cudnn-local-E3EC4A60-keyring.gpg /usr/share/keyrings/
 ```
 
+Then, start the installation. Remember not to copy these commands. After the 'lincudnn ...', yours must be set with 'tab'.
+
+```
+sudo apt-get update
+
+# Install the runtime library.
+
+sudo apt-get install libcudnn8=8.x.x.x-1+cudaX.Y
+
+# Install the developer library.
+
+sudo apt-get install libcudnn8-dev=8.x.x.x-1+cudaX.Y
+
+# Install the code samples and the cuDNN library documentation.
+
+sudo apt-get install libcudnn8-samples=8.x.x.x-1+cudaX.Y
+```
 
 
 
