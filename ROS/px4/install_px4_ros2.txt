@@ -1,0 +1,125 @@
+#Download PX4-Autopilot Simulation
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - 
+sudo apt-get install git
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+reboot
+##############################
+sudo apt-get install curl
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk install gradle 6.3
+##############################
+#Eprosima Foonathan memory
+git clone https://github.com/eProsima/foonathan_memory_vendor.git
+cd foonathan_memory_vendor
+mkdir build && cd build
+cmake ..
+sudo cmake --build . --target install
+cd ~
+##############################
+#FastDDS
+sudo apt install libp11-dev libengine-pkcs11-openssl
+git clone --recursive https://github.com/eProsima/Fast-DDS.git -b v2.0.2 ~/FastDDS-2.0.2
+cd ~/FastDDS-2.0.2
+mkdir build && cd build
+cmake -DTHIRDPARTY=ON -DSECURITY=ON ..
+sudo make install
+cd ~
+##############################
+# Fast-RTPS-Gen
+git clone --recursive https://github.com/eProsima/Fast-DDS-Gen.git -b v1.0.4 ~/Fast-RTPS-Gen \
+    && cd ~/Fast-RTPS-Gen \
+    && gradle assemble \
+    && sudo env "PATH=$PATH" gradle install    
+##############################
+# Install ROS2 Foxy and Gazebo  
+sudo apt update && sudo apt install locales \
+    && sudo locale-gen en_US en_US.UTF-8 \
+    && sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
+    && export LANG=en_US.UTF-8 \
+    && sudo apt update && sudo apt install curl gnupg2 lsb-release
+
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+sudo apt update
+sudo apt install ros-foxy-desktop
+sudo apt update
+sudo apt-get install ros-foxy-gazebo-ros
+sudo apt update
+
+##############################
+#colcon build tools
+sudo apt install python3-colcon-common-extensions
+sudo apt update \
+&& sudo apt install ros-foxy-eigen3-cmake-module  \
+&& sudo apt update  \
+&& sudo apt install python3-testresources \
+&& sudo apt update  \
+&& sudo pip3 install -U empy pyros-genmsg setuptools \
+
+###############################
+
+sudo apt install libasio-dev libtinyxml2-dev \
+&& sudo apt install libp11-dev libengine-pkcs11-openssl \
+&& pip install -U colcon-common-extensions vcstool
+
+###############################
+sudo usermod -a -G dialout $USER \
+&& sudo apt-get remove modemmanager -y \
+&& sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y \
+&& wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage \
+&& sudo chmod +x ./QGroundControl.AppImage
+###############################
+
+#https://docs.px4.io/master/en/ros/ros2_comm.html
+#https://docs.px4.io/master/en/ros/ros2_offboard_control.html
+###############################
+#Create and build the workspace
+mkdir -p ~/px4_ros_com_ros2/src \
+&& git clone https://github.com/PX4/px4_ros_com.git ~/px4_ros_com_ros2/src/px4_ros_com \
+&& git clone https://github.com/PX4/px4_msgs.git ~/px4_ros_com_ros2/src/px4_msgs
+
+sudo apt-get install -y python-dev python-numpy python3-dev python3-numpy
+
+cd ~/px4_ros_com_ros2/src/px4_ros_com/scripts \
+&& source build_ros2_workspace.bash
+cd ~/px4_ros_com_ros2/src/px4_ros_com/scripts
+source build_ros2_workspace.bash
+cd ~
+###############################
+
+make submodulesupdate
+
+###############################
+#Run Simulation
+
+#New Terminal
+ cd ~/PX4-Autopilot/ \
+&&  make px4_sitl_rtps gazebo
+#New Terminal
+source ~/px4_ros_com_ros2/install/setup.bash \
+&& micrortps_agent -t UDP
+
+#New Terminal
+source ~/px4_ros_com_ros2/install/setup.bash \
+&& ros2 run px4_ros_com offboard_control
+
+
+#For MAVROS and Ros1
+cd PX4-Autopilot
+make px4_sitl_rtps gazebo
+
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
+DONT_RUN=1 make px4_sitl_default gazebo
+
+sudo apt upgrade libignition-math4
+
+source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
+roslaunch px4 mavros_posix_sitl.launch
