@@ -86,19 +86,18 @@ sudo apt-get install -y python-dev python-numpy python3-dev python3-numpy
 
 cd ~/px4_ros_com_ros2/src/px4_ros_com/scripts \
 && source build_ros2_workspace.bash
-cd ~/px4_ros_com_ros2/src/px4_ros_com/scripts
-source build_ros2_workspace.bash
 cd ~
 ###############################
 
 make submodulesupdate
 
 ###############################
-#Run Simulation
+#Run Simulation - Ros 2
 
 #New Terminal
  cd ~/PX4-Autopilot/ \
 &&  make px4_sitl_rtps gazebo
+
 #New Terminal
 source ~/px4_ros_com_ros2/install/setup.bash \
 && micrortps_agent -t UDP
@@ -107,6 +106,7 @@ source ~/px4_ros_com_ros2/install/setup.bash \
 source ~/px4_ros_com_ros2/install/setup.bash \
 && ros2 run px4_ros_com offboard_control
 
+###############################
 
 #For MAVROS and Ros1
 cd PX4-Autopilot

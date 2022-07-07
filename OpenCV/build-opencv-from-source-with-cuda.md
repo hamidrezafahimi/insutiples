@@ -6,6 +6,7 @@
 
 https://www.youtube.com/watch?v=whAFl-izD-4
 
+*Note: What is explained in the video is not so fresh and changes have been made in the methods. So preferably refer to the instructions given in the nvidia website*
 
 1. Download and apply your proper graphics driver
 
@@ -157,6 +158,33 @@ CUDA_GENERATION   --->    (for-me-it-was-Maxwell)
  
 CUDA_ARCH_BIN    --->    (for-my-geforce-950m-it-was-5.0)
 
+Hit 'Configure'
+
+- **GUI-related flags**
+
+I once faced an error trying to show an image in my first opencv script after installation. I first did the following in an alternative terminal:
+
+```
+sudo apt install libgtk2.0-dev
+
+# NOTE: The exact package name must be read from the terminal output which is shown after you face the aforementioned error. It suggests you what to install if you're using ubuntu.
+```
+
+Then, I fixed the issue by recompiling the opencv with some additional flags on. Those are:
+
+CMAKE_BUILD_TYPE=RELEASE
+CMAKE_INSTALL_PREFIX=/usr/local
+WITH_TBB=ON
+BUILD_NEW_PYTHON_SUPPORT=ON
+WITH_V4L=ON
+INSTALL_C_EXAMPLES=ON
+INSTALL_PYTHON_EXAMPLES=ON
+BUILD_EXAMPLES=ON
+WITH_QT=ON
+WITH_GTK=ON
+WITH_OPENGL=ON
+
+Hit 'Configure'
 
 8. After configuration is done and you have no red flags, hit 'Generate'
 
@@ -175,4 +203,21 @@ make -j7
 ```
 sudo make install
 ```
+
+11. Check if the installation was successful. Open a python script in the terminal:
+
+```
+python3
+```
+
+Inside it:
+
+```
+import cv2
+cv2.cuda.getCudaEnabledDeviceCount()
+```
+
+You should get a '1' if you have successfully built opencv with cuda support for your GPU.
+
+
 
