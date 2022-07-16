@@ -10,7 +10,7 @@
 
 2. Make sure that the bootable flash is connected to the usb port. Restart.
 
-3. When the system starts. Hit 'delete', so the bios UI (boot) opens.
+3. When the system starts. Hit 'delete' (or whatever key needed depending on your device), so the bios UI (boot) opens.
 
 3. Go to the 'boot' tab.
 
@@ -52,19 +52,35 @@
 
 17. When arrived to the step in which the disk partitions are listed:
 
-- click on the partition in which you are to install ubuntu. Hit the 'change...' option. This partition must be allocated in the 'root' (Determined with '/'). Also, the 'Ext4' format is needed for the partition in which you're going to install ubuntu. Check the 'format partition' option.
+- click on the partition in which you are to install ubuntu. Hit the 'change...' option. This `mount point` must be 'root' (Determined with `/`). Also, the 'Ext4' format is needed for the partition in which you're going to install ubuntu (Set in the `Use As` field). Check the 'format partition' option.
 
-- In some platforms, an 'EFI' partition is necessary with like 100 MB size and 'efi' format. Starting the installation, it is possible that you face an error related with non-allocating such partition. In such cases, simply add the mentioned partition in the list. To do so, select an unallocated partition and hit on the cross botton.
+- Also, an 'EFI' partition is necessary with like 100 MB size and 'efi' format. Starting the installation, it is possible that you face an error related with non-allocating such partition. In such cases, simply add the mentioned partition in the list. To do so, select an unallocated partition and hit on the cross botton. Set 'efi' for the `Use As` field. Check the options 'logical' and 'At the beginning of the space'.
 
-- Remember the 'swap' format for swap partition, the 'Ext4' for Linux, and 'NTFS' for the shared spaces.
+- Remember the 'swap' format for swap partition, the 'Ext4' for Linux, and 'NTFS' for the shared spaces. (We're talking about the `Use As` field in the 'change ...' menu)
 
-- In the bottom, there is also a pop-up menu in which the device to onstall the boot is to be determined. Choose your main hard drive in which you're installing os.
+- In the bottom, there is also a pop-up menu in which the device to onstall the boot is to be determined. Choose your main hard drive in which you're installing the OS.
 
 18. After the memory allocation step, choosing the region, and setting username and password, installation begins. After it's done, a reboot is performed. When system starts again (on the basis of boot priorities determined in the bios), it asks you to unplug the flash memory so the OS starts on your device.
 
-* A probable problem in installation step is facing an 'Executing grub-install/dev/sdb failed' fatal error. In this case, a boot-repair inside the image file you are in, to do so, this video worked for me:
+* A probable problem in installation step is facing an 'Executing grub-install/dev/sdb failed' fatal error. In this case, a boot-repair inside the image file you are in, to do so:
 
-https://youtu.be/fleF4qDtwDE
+Power off your system. Then turn it on and enter to the bootable flash image. When you enter
+
+```
+sudo apt-add-repository ppa:yannubuntu/boot-repair
+# Then press enter to install it
+
+sudo apt-get update
+
+sudo apt-get install boot-repair
+# Then type Y to install it
+```
+
+Then go to the start menu. Search for the 'boot-repair app. Click on it. 
+The boot-repair process starts.
+If asked, select the recommended boot-repair.
+If asked, select to upload report to pastebin
+
 
 19. After celebrating your new OS, go to 'Software and Updates' app. In ther 'additional drivers' tab, you may find your GPU driver (If you got one!). An installed-driver case is gained such that when you choose the first GPU driver item (like nvidia - the stable version - usually determined with the term 'tested') and choose to download it. Restart. If you got out of boot and saw your GPU, your driver is installed and ... here you go.
 
