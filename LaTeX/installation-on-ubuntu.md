@@ -10,6 +10,10 @@ sudo apt install texlive-latex-extra
 
 Also do this in order to avoid probable errors:
 ```
+sudo apt-get update -y
+
+sudo apt-get install -y texlive-science
+
 sudo apt-get install texlive-latex-recommended
 
 sudo apt install texlive-fonts-recommended
