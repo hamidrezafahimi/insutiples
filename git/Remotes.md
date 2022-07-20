@@ -15,7 +15,7 @@ git remote add <remoteName> <https://...remoteAddress.git>
 #### Removing a remote
 
 ```
-git remote rm <remote>
+git remote rm <remote-name>
 ```
 
 
