@@ -14,6 +14,13 @@ git add .
 
 . stands for <the-current-dir>
 
+#### Cancelling add
+
+```
+git reset .
+```
+
+
 #### Commiting (after adding)
 
 ```
@@ -34,11 +41,6 @@ git push --all <remote>
 ```
 
 
-#### Cancelling add
-
-```
-git reset .
-```
 
 
 

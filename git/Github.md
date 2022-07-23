@@ -59,12 +59,5 @@ Well, in such a case, idk what to do. Follow the method 1 or 3!
 
 #### Linking a Folder inside a Repo to another Repo
 
-The third method is creating the interior folder as a submodule. Git submodules allow you to keep a git repository as a subdirectory of another git repository. Git submodules are simply a reference to another repository at a particular snapshot in time. Git submodules enable a Git repository  to incorporate and track version history of external code.
+The third method is creating the interior folder as a submodule. To do so, refer to the the instruction file: `Submodules.md`.
 
-So do it like this:
-
-```
-git config --global --add safe.directory path/to/the/interior/folder
-
-git submodule add <url-for-the-root-repo.git> path/to/the/interior/folder
-```
