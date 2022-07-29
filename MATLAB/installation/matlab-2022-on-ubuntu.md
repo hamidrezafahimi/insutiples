@@ -50,6 +50,11 @@ Then set the installation directory as "/opt/MATLAB/R2022a"
      WITH OVERWRITING OF EXISTING FILE (<matlabfolder> - is where you have selected to install Matlab on step 4)
      If you was NOT asked about overwriting then you are doing something wrong (or Matlab was not installed successfully)!!!
 
+* *NOTE:* This makes it so simple for you. Go to the folder containing Matlab912R2022a_Lin64.iso  file. In a terminal:
+
+```
+sudo cp libmwlmgrimpl.so /opt/MATLAB/R2022a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so
+```
 
 7. Work with Matlab :)
 
