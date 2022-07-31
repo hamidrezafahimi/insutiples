@@ -67,8 +67,8 @@ UUID=B73A-1111  /boot/efi       vfat    umask=0077      0       1
 UUID=ec9a80e5-f645-479d-ae72-25a3197b92a0 none            swap    sw           >
 ```
 
-Remember that you should hit 'tab' (not 'space') after adding each of <mount point>,
-<type>, <options>, <dump>, and <pass> in front of the UUID=477D2BB02F80432D 
+Remember that you should hit 'tab' (not 'space') after adding each of < mount point>,
+< type>, < options>, < dump>, and < pass> in front of the UUID=477D2BB02F80432D 
 (or whatever UUID it is). 
 Don't put '>' at the end of the line!
 After editing, hit 'ctrl+X', then 'Y', and then 'Enter' to save and exit.

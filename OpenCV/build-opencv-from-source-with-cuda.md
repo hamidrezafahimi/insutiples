@@ -2,41 +2,60 @@
 *IMPORTANT TIP: PLEASE DO NOT try this installation prodecure with 'anaconda' installed. I did it once and it screwed my python paths. The best experience is to do the installation with a fresh ubuntu (mine was 20.04 LTS)*
 
 
-0. For installation guide, refer to the video:
+**0.** For installation guide, refer to the video:
 
 https://www.youtube.com/watch?v=whAFl-izD-4
 
 *Note: What is explained in the video is not so fresh and changes have been made in the methods. So preferably refer to the instructions given in the nvidia website*
 
-1. Download and apply your proper graphics driver
+## 1. Graphics Driver Installation
+
+Download and apply your proper graphics driver. To do so, refer to the [installation guide]().
+
+## 2. CUDA Installation:
+
+Download and install cuda. Refer to the [installation guide]().
+
+## 3. CUDNN Installation:
+
+Download and install cuDNN. Refer to the [installation guide]().
 
 
-2. Download and install cuda
+## 4. Cloning the Source Code: 
+
+Create an < OpenCV-root> folder. Inside it, clone the both source codes for 'opencv' and 'opencv_contrib' from the main 'opencv' account in github. 
+
+```
+git clone https://github.com/opencv/opencv.git
+
+git clone https://github.com/opencv/opencv_contrib.git
+```
+
+## 5. Create Build Directory:
+
+In the < OpenCV-root>, create a < build> folder named 'build'.
 
 
-3. Download and install cuDNN
+## 6. Installation of CMake GUI:
 
-
-4. Create an <OpenCV-root> folder. Inside it, clone the both source codes for 'opencv' and 'opencv_contrib' from the main 'opencv' account in github. In the <OpenCV-root>, create a <build> folder named 'build'.
-
-
-5. In a generall case, install the cmake GUI:
+In a generall case, install the cmake GUI:
 
 ```
 sudo apt-get install cmake cmake-gui
 ```
 
+## 7. CMake Initial Configuration: 
 
-6. In the cmake gui, first, set the path to opencv local repository (until '.../opencv') in the 'source' field. Then set the path to '.../build' in the 'build' field.
+In the cmake gui, first, set the path to opencv local repository (until '.../opencv') in the 'source' field. Then set the path to '.../build' in the 'build' field.
 
 Hit 'Configure'
 
 The flags that must be set are then shown in red.
 
 
-7. Set some flags:
+## 8. CMake Configuration: 
 
-Set the following arguments IN ORDER!!:
+As follows, set some of flags. Set the following arguments IN ORDER!!:
 
 
 - **extra modules flag:**
@@ -142,7 +161,7 @@ So I did:
 
 PYTHON3_PACKAGES_PATH --->    /usr/local/lib/python3.8/dist-packages
 
-Check the above addresses to be valid in wour case. The video has more details about these stuff.
+Check the above addresses to be valid in your case. The video has more details about these stuff.
 
 
 Hit 'Configure'
@@ -150,7 +169,7 @@ Hit 'Configure'
 
 - **The rest of cuda flags**
 
-For the next flag, check the 'cuda' wikipedia page. In the large table, find the version for your graphics card. Also, set the 2nd following flag with the proper generation:
+For the next flag, check the 'cuda' [wikipedia page](https://en.wikipedia.org/wiki/CUDA). In the large table, find the version for your graphics card. Also, set the 2nd following flag with the proper generation:
 
 CUDA_GENERATION   --->    (for-me-it-was-Maxwell)
 
@@ -186,10 +205,10 @@ WITH_OPENGL=ON
 
 Hit 'Configure'
 
-8. After configuration is done and you have no red flags, hit 'Generate'
+**9. CMake Generation** After configuration is done without errors and you have no red flags, hit 'Generate'
 
 
-9. Go to the <build> folder. Start the building:
+**10. Building** Go to the <build> folder. Start the building:
 
 In the following, I set -j7 to use 7 CPU cores in building procedure
 
@@ -198,13 +217,13 @@ make -j7
 ```
 
 
-10. In the <build> directory:
+**11. Installation** In the <build> directory:
 
 ```
 sudo make install
 ```
 
-11. Check if the installation was successful. Open a python script in the terminal:
+**12. Installation Check:** Check if the installation was successful. Open a python script in the terminal:
 
 ```
 python3
