@@ -1,14 +1,15 @@
 
-* Note: For installation of ubuntu 20, it is almost the same *
+# Installation of ubuntu 20.04 and 22.04
 
+The following instruction is tested and is almost the same for ubuntu 20.04 and ubuntu 22.04.
 
 1. Make a bootable flash. 
 
-(in ubuntu) Use the app "startup disk creator". Set the flash memory and the .iso file separately in the two fields.
+- (in ubuntu) Use the app "startup disk creator". Set the flash memory and the .iso file separately in the two fields.
 
-(in windows) It's so simple. You can use a portable rufus.
+- (in windows) It's so simple. You can use a portable rufus.
 
-* Note that the partitioning format (MBR or GPT) for making the bootable flash must be set properly wrt what you're going to choose for your hard drive partitioning (e.g. select GPT if you're going to set the partitioning format on GPT)
+* *Note:*  the partitioning format (MBR or GPT) for making the bootable flash must be set properly wrt what you're going to choose for your hard drive partitioning (e.g. select GPT if you're going to set the partitioning format on GPT)
 
 2. Make sure that the bootable flash is connected to the usb port. Restart.
 

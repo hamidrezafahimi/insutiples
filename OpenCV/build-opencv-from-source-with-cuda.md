@@ -2,23 +2,21 @@
 *IMPORTANT TIP: PLEASE DO NOT try this installation prodecure with 'anaconda' installed. I did it once and it screwed my python paths. The best experience is to do the installation with a fresh ubuntu (mine was 20.04 LTS)*
 
 
-**0.** For installation guide, refer to the video:
-
-https://www.youtube.com/watch?v=whAFl-izD-4
+**0.** For installation guide, refer to [this video](https://www.youtube.com/watch?v=whAFl-izD-4).
 
 *Note: What is explained in the video is not so fresh and changes have been made in the methods. So preferably refer to the instructions given in the nvidia website*
 
 ## 1. Graphics Driver Installation
 
-Download and apply your proper graphics driver. To do so, refer to the [installation guide]().
+Download and apply your proper graphics driver. To do so, refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/driver-installation-on-ubuntu.md).
 
 ## 2. CUDA Installation:
 
-Download and install cuda. Refer to the [installation guide]().
+Download and install cuda. Refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/cuda-installation-on-ubuntu.md).
 
 ## 3. CUDNN Installation:
 
-Download and install cuDNN. Refer to the [installation guide]().
+Download and install cuDNN. Refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/cudnn-installation-on-ubuntu.md).
 
 
 ## 4. Cloning the Source Code: 
