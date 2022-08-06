@@ -50,5 +50,5 @@ source /opt/ros/foxy/setup.bash
 ros2 topic list
 ```
 
-And you'll be able to see the ros2 topics enables by the robot.
+And you'll be able to see the ros2 topics enabled by the robot.
 
