@@ -5,7 +5,7 @@
 git rev-parse --abbrev-ref HEAD
 ```
 
-If the output is head, then you'r on no branch.
+If the output is HEAD, then you'r on no branch.
 
 
 #### Create a new branch
