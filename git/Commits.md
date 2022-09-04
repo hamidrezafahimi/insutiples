@@ -48,3 +48,10 @@ To delete the last commits:
 ```
 git reset --hard HEAD~<num-of-last-commits-to-be-deleted>
 ```
+
+
+#### See the difference between two commits
+
+```
+git diff --name-only SHA1 SHA2
+```

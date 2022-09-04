@@ -25,3 +25,11 @@ Get only the conflicting files and line numbers:
 ```
 git diff --check
 ```
+
+
+Get only the conflicting file names:
+
+```
+git diff --name-only
+```
+
