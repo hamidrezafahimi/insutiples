@@ -1,5 +1,5 @@
 
-*IMPORTANT TIP: PLEASE DO NOT try this installation prodecure with 'anaconda' installed. I did it once and it screwed my python paths. The best experience is to do the installation with a fresh ubuntu (mine was 20.04 LTS)*
+*IMPORTANT TIP: PLEASE DO NOT try this installation prodecure with extra commands (like sourcing 'anaconda' dirs) in your `.bashrc`. The best experience is to do the installation with a fresh ubuntu (mine was 20.04 LTS)*
 
 
 **0.** For installation guide, refer to [this video](https://www.youtube.com/watch?v=whAFl-izD-4).
@@ -236,5 +236,5 @@ cv2.cuda.getCudaEnabledDeviceCount()
 
 You should get a '1' if you have successfully built opencv with cuda support for your GPU.
 
-
+*IMPORTTANT TIP:* You may later install opencv-python on your system. Then, the above `getCudaEnabledDeviceCount()` function returns zero. But if you unistall your new opencv-python (which is probably placed in your `.../lib/python3.8/site-packages` dir), you'll get back to the current state.
 

@@ -2,7 +2,7 @@
 Source ros installation:
 
 ```
-source /opt/ros/noetic/setup.bash
+source /opt/ros/<ros-distro>/setup.bash
 ```
 
 Make workspace:

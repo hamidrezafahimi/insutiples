@@ -11,7 +11,7 @@ cd /tmp
 
 ```
 
-Before the next comman in 'tmp', make sure you download the latest version by firstly visiting their official site:
+Before the next command in 'tmp', make sure you download the latest version by firstly visiting their official site:
 https://repo.anaconda.com/archive/
 
 ```
@@ -22,11 +22,5 @@ bash anaconda.sh
 
 You should read the terms of service and confirm the location for anaconda files. 
 
-After installetion, add the followings to your '.bashrc' in home:
 
-```
-# Add to .bashrc
-export PATH=~/anaconda3/bin:$PATH
-source ~/anaconda3/etc/profile.d/conda.sh
-```
 

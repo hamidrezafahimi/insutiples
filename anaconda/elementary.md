@@ -1,4 +1,16 @@
 
+### General initial task
+
+Do the following each time you're going to use anaconda in a terminal:
+
+```
+export PATH=~/anaconda3/bin:$PATH
+
+source ~/anaconda3/etc/profile.d/conda.sh
+```
+
+*TIP:* I strongly recommend not to add the above to your `.bashrc`!
+
 
 #### Create a conda environment
 
