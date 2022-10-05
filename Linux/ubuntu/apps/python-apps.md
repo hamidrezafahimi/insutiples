@@ -1,6 +1,8 @@
 
 
-#### rosbag
+# ROS
+
+### rosbag
 
 ```
 sudo apt-get update -y
@@ -8,8 +10,18 @@ sudo apt-get update -y
 sudo apt-get install -y python3-rosbag
 ```
 
-First, I tried to install `python-rosbag`. But it showed an error and proposed me to install the `python3-rosbag`
+First, in ubuntu 20.04, I tried to install `python-rosbag`. But it showed an error and proposed me to install the `python3-rosbag`
 
+### rospy
+
+
+### rospkg
+
+```
+sudo apt-get update -y
+
+sudo apt-get install -y python-rospkg
+```
 
 
 

@@ -23,7 +23,7 @@ colcon build
 
 Sourcing the local_setup of the overlay will only add the packages available in the overlay to your environment. setup sources the overlay as well as the underlay it was created in, allowing you to utilize both workspaces.
 
-So you got too ways:
+So you got two ways:
 
 ```
 # 1.

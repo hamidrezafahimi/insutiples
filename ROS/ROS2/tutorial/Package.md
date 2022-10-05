@@ -1,6 +1,6 @@
 
 
-## Creation of an Empty Package
+## Creating a New Package
 
 Package creation in ROS 2 uses ament as its build system and colcon as its build tool. You can create a package using either CMake or Python, which are officially supported, though other build types do exist.
 
