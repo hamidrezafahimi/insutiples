@@ -8,15 +8,15 @@
 
 ## 1. Graphics Driver Installation
 
-Download and apply your proper graphics driver. To do so, refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/driver-installation-on-ubuntu.md).
+Download and apply your proper graphics driver. To do so, refer to the [installation guide](https://github.com/hamidrezafahimi/instructor_archive/blob/main/nvidia/driver-installation-on-ubuntu.md).
 
 ## 2. CUDA Installation:
 
-Download and install cuda. Refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/cuda-installation-on-ubuntu.md).
+Download and install cuda. Refer to the [installation guide](https://github.com/hamidrezafahimi/instructor_archive/blob/main/nvidia/cuda-installation-on-ubuntu.md).
 
 ## 3. CUDNN Installation:
 
-Download and install cuDNN. Refer to the [installation guide](https://github.com/hamidrezafahimi/coder_archive/blob/main/nvidia/cudnn-installation-on-ubuntu.md).
+Download and install cuDNN. Refer to the [installation guide](https://github.com/hamidrezafahimi/instructor_archive/blob/main/nvidia/cudnn-installation-on-ubuntu.md).
 
 
 ## 4. Cloning the Source Code: 
