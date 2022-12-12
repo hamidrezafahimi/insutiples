@@ -1,6 +1,7 @@
 
 
 #### Create an automaticly updating todo list (before each commit):
+
 In the root of repo:
 ```
 cd .git/hooks/
@@ -16,6 +17,8 @@ git add TODO.txt
 (For Linux) Create a file named: **pre-commit**. In the same folder, run:
 
 ```
+touch pre-commit
+
 chmod +x pre-commit
 ```
 
