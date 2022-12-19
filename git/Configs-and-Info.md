@@ -4,6 +4,12 @@
 git --version
 ```
 
+#### Get the address to the root of current repo
+
+```
+git rev-parse --show-toplevel
+```
+
 #### Get the current authentication data
 
 ```
@@ -42,3 +48,5 @@ git config --global core.editor "<editor-name>"
 ```
 git count-objects -v
 ```
+
+
