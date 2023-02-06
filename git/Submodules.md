@@ -7,9 +7,10 @@ Git submodules allow you to keep a git repository as a subdirectory of another g
 If you've cloned a repo inside your repo, declare it as a submodule before adding it into the stage space.
 
 ```
-git config --global --add safe.directory path/to/the/interior/folder
+#if needed
+#git config --global --add safe.directory path/to/the/interior/folder
 
-git submodule add <url-for-the-root-repo.git> path/to/the/interior/folder
+git submodule add <url-for-the-root-repo>.git path/to/the/interior/folder
 ```
 
 If you need to link a specific branch (version):
@@ -56,4 +57,17 @@ Change it this way so that the changes made into the local folder (e.g. build an
 	ignore = dirty
 ```
 
+### Remove a submodule
 
+```
+0. mv a/submodule a/submodule_tmp
+
+1. git submodule deinit -f -- a/submodule    
+2. rm -rf .git/modules/a/submodule
+3. git rm -f a/submodule
+# Note: a/submodule (no trailing slash)
+
+# or, if you want to leave it in your working tree and have done step 0
+3.   git rm --cached a/submodule
+4. mv a/submodule_tmp a/submodule
+```
