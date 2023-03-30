@@ -14,7 +14,8 @@ git grep --heading -n TODO > TODO.txt
 git add TODO.txt
 ```
 
-(For Linux) Create a file named: **pre-commit**. In the same folder, run:
+(For Linux) 
+There, create a file named: **pre-commit**. In the same folder, run:
 
 ```
 touch pre-commit

@@ -3,9 +3,9 @@
 
 The followings are general descriptions needed to start-up a raspberry pi:
 
-1. Connect power supply adapter, monitor, keyboard, and mouse to your 
+1. Connect power supply adapter, monitor, keyboard, and mouse to your raspberry pi.
 
-#### 2. **Initial Confiruration of OS: 
+#### 2. **Initial Configuration of OS: 
 
 In the first opened GUI do the following
 

@@ -1,0 +1,1 @@
+The instructions in this directory are given for *ubuntu* distribution by default

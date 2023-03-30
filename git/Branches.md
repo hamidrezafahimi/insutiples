@@ -54,7 +54,7 @@ To monitor just the current branch:
 gitk
 ```
 
-To monitor just all the branches:
+To monitor all the branches:
 
 ```
 gitk --all

@@ -24,6 +24,8 @@ rpi-imager
 
 choose OS -> Erase -> (in the first page) write -> yes -> continue
 
+* *NOTE:* You should shoose the OS and Storage to install the OS on.
+
 
 5. Go [here](https://www.raspberrypi.com/software/operating-systems/).
 

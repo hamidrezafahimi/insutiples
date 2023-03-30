@@ -30,5 +30,5 @@ sudo apt-get -y install cuda
 /usr/local/cuda/bin/nvcc --version
 ```
 
-You should get the version for your installed cuda.
+You should get the version of your installed cuda.
 
