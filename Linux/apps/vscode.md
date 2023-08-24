@@ -13,7 +13,6 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/ms-vscode-keyring.gpg] https
 sudo apt update
 
 sudo apt install -y code
-
 ```
 
 
@@ -30,3 +29,33 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 
 sudo apt install code
 ```
+
+### How i added keyboard shortcut to move editor right of the current window
+
+1. `ctrl` + `shift` + `P`
+
+2. Type: `Open Keyboard Shortcuts` and select the option
+
+3. search `move editor to right`
+
+4. select the `+` sign on the left of the found option
+
+5. Set your desired shortcut. I set `ctrl`+`meta`+`->`
+
+6. I also did for other 3 directons
+
+### Setup for c++
+
+Install these two
+
+```
+- c/c++ microsoft
+
+- Code runner by jun han
+
+- intellicode
+```
+
+- Do `code .` on the project folder. on the relative directory `.vscode/settings.json`, add the absolute directory contaninig the `CMakeLists.txt`
+
+- On the opened project window, on the upper bar, choose the proper compiler (for me gcc - idk which version) and cmake configuration starts

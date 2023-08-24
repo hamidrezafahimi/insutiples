@@ -13,7 +13,7 @@ As I know, this is the most bothering error in cpp. There are a couple of reason
 
 ### undefined reference to `vtable for <class-A>'
 
-Inside the class A, you've declared a non-pure virtual function which is not defined is the library.
+Inside the class A, you've declared a non-pure virtual function which is not defined in the library.
 
 
 ### cannot declare variable 'dobj' to be of abstract type 'D'

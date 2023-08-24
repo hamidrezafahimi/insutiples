@@ -28,13 +28,16 @@ This will update the submodule to the latest remote commit:
 git submodule update --remote --merge
 ```
 
-When cloning a repo containing sobmodules, or when cloning a repo inside your repo, do the following in ordedr to update your submodules.
+To synchronize addresses for submodules:
 
 ```
 # In the root of repo
-
 git submodule sync --recursive
+```
 
+When cloning empty submodules inside your repo, do the following in order to update your submodules:
+
+```
 git submodule update --init --recursive --force
 ```
 
@@ -66,14 +69,8 @@ Change it this way so that the changes made into the local folder (e.g. build an
 ### Remove a submodule
 
 ```
-0. mv a/submodule a/submodule_tmp
-
-1. git submodule deinit -f -- a/submodule    
-2. rm -rf .git/modules/a/submodule
+#1. git submodule deinit -f -- a/submodule
 3. git rm -f -r a/submodule
-# Note: a/submodule (no trailing slash)
-
-# or, if you want to leave it in your working tree and have done step 0
-3.   git rm -r --cached a/submodule
-4. mv a/submodule_tmp a/submodule
+2. rm -rf .git/modules/a/submodule
+#4. git rm -r --cached a/submodule
 ```
