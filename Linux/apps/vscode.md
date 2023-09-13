@@ -59,3 +59,34 @@ Install these two
 - Do `code .` on the project folder. on the relative directory `.vscode/settings.json`, add the absolute directory contaninig the `CMakeLists.txt`
 
 - On the opened project window, on the upper bar, choose the proper compiler (for me gcc - idk which version) and cmake configuration starts
+
+There are two important files in `.vscode` folder in the root of the project. I put the a sample of their content for one of my successfuly configured projects, just in case:
+
+```
+# file: settings.json
+
+{
+    "cmake.sourceDirectory": "/media/hamid/Workspace/smart_POV/env/AIMS/build",
+    "cmake.configureOnOpen": true
+}
+
+# file: c_cpp_properties.json
+
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/include/opencv4/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+```
