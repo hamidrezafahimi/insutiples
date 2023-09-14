@@ -1,0 +1,128 @@
+\chapter{
+قراردادن روابط ریاضی
+}
+
+در ادامه، روابط ریاصی در این فصل قرار می‌گیرد. قراردادن روابط ریاضی نیز بسیار ساده است. در اینجا دو نوع رابطه ریاضی، روابط تنها و دسته روابط بررسی می‌شوند.
+
+
+\section{ 
+قراردادن یک رابطه ریاضی تنها
+}
+\label{sec:singleEq} 
+
+یک نمونه از معادله تنها به صورت معادله
+\ref{eq:rotMat}
+است.
+
+\begin{equation}
+\label{eq:rotMat}
+R = \begin{bmatrix} r_{11} & r_{12} & r_{13} \\ r_{21} & r_{22} & r_{23} \\ r_{31} & r_{32} & r_{33} \end{bmatrix}
+\end{equation}
+
+این هم چند نمونه معادله دیگر، برای آنها که وقت ندارند و کپی‌کردن را به مسلط شدن ترجیچ می‌دهند.
+
+\begin{equation}
+\label{eq:pointTransform}
+\begin{bmatrix} X \\ Y \\ Z \end{bmatrix}^o = [\overrightarrow{T}]_c^o + [R]_c^o \begin{bmatrix} x \\ y \\ z \end{bmatrix}^c
+\end{equation} 
+
+\begin{equation}
+\label{eq:rotationMatrix}
+R = \cos(\alpha)I + (1-\cos{\alpha})rr^T + \sin(\theta)\begin{bmatrix} 0 & -r_z & r_y \\ r_z & 0 & -r_x \\ -r_y & r_x & 0 \end{bmatrix} 
+\end{equation}
+
+\begin{equation}
+\label{eq:AHs}
+A_{RH} = A_{LH} = A_{UH} = A_{DH} = \frac{A_{total}}{2}
+\end{equation}
+
+\begin{equation}
+%\begin{aligned}
+areaRatio = \frac{smallestTag}{largestTag}
+\label{eqn:areaRatio}
+%\end{aligned}
+\end{equation}
+
+\begin{equation}
+\label{eq:co-row standard}
+\begin{aligned}
+if:  \;\;\; &|y_P-y_Q|<\Delta y_{lim} \;\;\; and  \;\;\; \Delta x_{lim}<|x_P-x_Q|  \;\;\; and  \;\;\; |x_P-x_Q|=\Delta x_{min} \;\;\; \\ &\Rightarrow   \;\;\; P,Q\in R_k 
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\label{eq:co-column standard}
+\begin{aligned}
+if:  \;\;\; &|x_P-x_Q|<\Delta x_{lim} \;\;\; and  \;\;\; \Delta y_{lim}<|y_P-y_Q|  \;\;\; and  \;\;\; |y_P-y_Q|=\Delta y_{min} \;\;\; \\ &\Rightarrow   \;\;\; P,Q\in C_k 
+\end{aligned}
+\end{equation}
+
+\section{ 
+دسته روابط
+}
+\label{sec:Introduction} 
+
+
+یک نمونه از معادله با دو زیرمعادله به صورت معادلات
+\ref{eq:euler_from_rotmat}
+می‌باشد. این هم یک نمونه توضیح مولفه‌های موجود در رابطه:
+
+در برابری
+\ref{eq:euler_from_rotmat}
+،
+\lr{$\phi_{v}$}
+،
+\lr{$\theta_{v}$}
+و
+\lr{$\psi_{v}$}
+به ترتیب به زاویه چرخش حول محور
+\lr{x}
+، پیچش حول محور
+\lr{y}
+و گردش حول محور
+\lr{z}
+اشاره دارند و زیروند
+\lr{v}
+حکایت از تحصیل این سه مولفه از طریق ناوبری تصویری دارد.
+
+\begin{subequations}
+\label{eq:euler_from_rotmat}
+\begin{align}
+\phi_{v} &= atan2(-r_{32}, r_{33}) \\
+\theta_{v} &= asin(r_{31}) \\
+\psi_{v} &= atan2(-r_{21}, r_{11})
+\end{align}
+\end{subequations}
+ 
+ و این هم چندتای دیگر
+ 
+ \begin{subequations}
+\label{eq:rodriguesVec}
+\begin{align}
+\alpha &= norm(\overrightarrow{V}) = \sqrt{v_1^2 + v_2^2 + v_3^2} \\
+\overrightarrow{r} &= \frac{1}{\alpha} \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}
+\end{align}
+\end{subequations}
+
+
+\begin{subequations}
+\label{eq:avoid_guidance}
+\begin{align}
+\dot y &= ((\frac{A_{obs,R}}{A_{RH}})-(\frac{A_{obs,L}}{A_{LH}}))\dot y_{max} \\
+\dot z &= ((\frac{A_{obs,U}}{A_{UH}})-(\frac{A_{obs,D}}{A_{DH}}))\dot z_{max}
+\end{align}
+\end{subequations}
+
+
+
+\begin{subequations}
+\label{eq:dynamic_model}
+\begin{align}
+\ddot{x} &= (\cos{\phi}\sin{\theta}\cos{\psi}+\sin{\phi}\sin{\psi})\frac{1}{m}U \\
+\ddot{y} &= (\cos{\phi}\sin{\theta}\sin{\psi}+\sin{\phi}\cos{\psi})\frac{1}{m}U \\
+\ddot{z} &= -g + (\cos{\phi}\cos{\theta})\frac{1}{m}U \\
+\ddot\phi &= \dot\theta\dot\psi\frac{I_y-I_z}{I_x} + \frac{J_r}{I_x}\dot\theta\Omega + \frac{l}{I_x}M_{\phi} \\
+\ddot\theta &= \dot\phi\dot\psi\frac{I_z-I_x}{I_y} + \frac{J_r}{I_y}\dot\phi\Omega + \frac{l}{I_x}M_{\theta} \\
+\ddot\psi &= \dot\phi\dot\theta\frac{I_x-I_y}{I_z} \frac{l}{I_z}M_{\psi}
+\end{align}
+\end{subequations}

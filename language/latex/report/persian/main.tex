@@ -1,0 +1,48 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{setspace} 
+\usepackage[]{fncychap}
+\usepackage[hyphens]{url}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{appendix} 
+\usepackage{subfigure}
+\usepackage{geometry}
+\newgeometry{vmargin={30mm}, hmargin={25mm,25mm}}   % set the margins
+\usepackage[pagebackref=false]{hyperref}
+% بسته‌ای برای ظاهر شدن «مراجع»  در فهرست مطالب
+\usepackage[nottoc]{tocbibind}
+\usepackage{xepersian}
+\usepackage{amssymb}
+\settextfont[Scale=1]{B Nazanin}
+\setlatintextfont[Scale=.9]{Times New Roman}
+
+\begin{document}
+
+\include{Frontpage}
+\pagenumbering{alph}
+\include{Abstract}
+\include{Acknowledgements}
+\include{Abbreviations}
+\include{Contents}
+\include{Lists}
+\include{ChapterMods}
+
+\include{Chapter1}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+
+\appendix
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+\include{Appendices}
+
+\end{document}

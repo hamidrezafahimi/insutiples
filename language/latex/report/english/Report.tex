@@ -1,0 +1,43 @@
+\documentclass[pdftex,10pt,a4paper,oneside]{article}
+
+\usepackage{amsmath} 				%For both in-line and equation mode
+\numberwithin{equation}{section} 	%Numbering of our equations per section
+\usepackage{algorithm}
+\usepackage{algorithmic} 			%Algorithm styles, need to be nested for the example shown
+\usepackage{fancyhdr} 				%For our headers
+\usepackage{graphicx} 				%Inserting images
+\usepackage{lipsum}  				%Blank text fill, delete me when finished
+\usepackage{setspace} 				%Spacing on the front page for crest and titles
+\usepackage[]{fncychap} 			% Styles can be Sonny, Lenny, Glenn, Conny, Rejne, Bjarne and Bjornstrup
+\usepackage[hyphens]{url} 			%Deals with hyphens in urls to make them clickable
+\usepackage{xcolor} 				%Great if you want coloured text
+\usepackage{tabularx}
+\usepackage{appendix} 				%Take a wild guess slick
+\usepackage[hidelinks]{hyperref}
+
+\fancyhf{}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt}
+
+\begin{document}
+
+\include{Frontpage}
+\include{Abstract}
+\include{Acknowledgements}
+\include{Abbreviations}
+\include{Contents}
+\include{Lists}
+\include{ChapterMods}
+
+
+\include{Chapter1}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+
+\include{Appendices}
+
+\end{document}
