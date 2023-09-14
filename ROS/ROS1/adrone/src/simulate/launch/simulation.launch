@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find simulate)/worlds"/>
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find simulate)/worlds/models"/>
+  <env name="GAZEBO_PLUGIN_PATH" value="${GAZEBO_PLUGIN_PATH}:$(find simulate)"/>
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find simulate)/worlds/buildings_world/buildings_world.world"/>
+  </include>
+
+
+
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find simulate)/urdf/quadrotor.urdf.xacro id:=1" />
+
+   <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description
+        -urdf
+        -x '20'
+        -y '0'
+        -z '100'
+        -R '0'
+        -P '0'
+        -Y '0'
+        -model quadrotor_1"
+        respawn="false" output="screen"/>
+
+</launch>

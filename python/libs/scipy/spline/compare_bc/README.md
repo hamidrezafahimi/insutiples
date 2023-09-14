@@ -1,0 +1,2 @@
+
+This is a sample to compare the effect of different boundary conditions on how a spline model (I just work with cubic spline here) is predicting the future of an object's trajectory. You can set different bc sets in `SplinePath.py`. Run the `spline_extrap.py`. Hit q and see haw it predicts the future. The final two points are not considered in interpolation and must be compared with extrapolation curves. `objectPoses.csv` is a pose data sample. You can replace it with your data.

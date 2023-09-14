@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="marker2">
+    <static>true</static>
+    <link name="link">
+      
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.5 0.5</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://landing_marker2/materials/scripts</uri>
+            <uri>model://landing_marker2/materials/textures</uri>
+            <name>marker2</name>
+          </script>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+  
+</sdf>

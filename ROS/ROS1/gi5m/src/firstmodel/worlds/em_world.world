@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+	<world name="default">
+
+		<include>
+			<uri>model://sun</uri>
+		</include>
+
+		<include>
+			<uri>model://ground_plane</uri>
+			<pose> 0 0 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/usr/share/gazebo-7/models/cube_20k</uri>
+			<pose> 2.5 7 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/usr/share/gazebo-7/models/table</uri>
+			<pose> -5 -5 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/usr/share/gazebo-7/models/cinder_block_2</uri>
+			<pose> 7.5 -4 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/home/hamidreza/wss/gi5m/src/firstmodel/models/cinder_block1</uri>
+			<pose> 7.5 -5 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/home/hamidreza/wss/gi5m/src/firstmodel/models/cinder_block2</uri>
+			<pose> 3 -3 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/usr/share/gazebo-7/models/bookshelf</uri>
+			<pose> -5 1.5 0 0 0 0 </pose>
+		</include>
+
+		<include>
+			<uri>/usr/share/gazebo-7/models/car_wheel</uri>
+			<pose> 8 5 0 0 0 0 </pose>
+		</include>
+
+		<!-- <include>
+			<uri>/home/hamidreza/wss/gi5m/src/firstmodel/models/mymodelpik</uri>
+			<static>true</static>
+			<pose>0 0 5 0 0 0</pose>
+		</include> -->
+
+	</world>
+</sdf>

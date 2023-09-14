@@ -1,0 +1,284 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.52 0.80 0.92 1</background>
+      <shadows>false</shadows>
+    </scene>
+    <light type="directional" name="some_light">
+      <diffuse>0.7 0.7 0.7 0</diffuse>
+      <specular>1 1 1 0</specular>
+      <direction>0 -1 -1</direction>
+    </light>
+
+
+
+    <model name='buildings'>
+
+      <static>1</static>
+
+        <link name="link1">
+          <pose>60 -30 15 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 30</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building3</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link2">
+          <pose>60 0 20 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>15 15 40</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building6</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link3">
+          <pose>60 30 10 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>15 15 20</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building8</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link4">
+          <pose>30 90 15 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 30</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building4</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link5">
+          <pose>0 90 10 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 20</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building5</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link6">
+          <pose>-30 90 25 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 50</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building9</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link7">
+          <pose>-120 60 10 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 20</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building7</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link8">
+          <pose>-120 0 15 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 30</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building1</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+        <link name="link9">
+          <pose>-120 -60 25 0 0 0</pose>
+          
+          <visual name="visual">
+            <geometry>
+              <box>
+                <size>10 10 50</size>
+              </box>
+            </geometry>
+
+            <material>
+              <script>
+                <uri>model://building_texture/materials/scripts</uri>
+                <uri>model://building_texture/materials/textures</uri>
+                <name>building2</name>
+              </script>
+            </material>
+
+          </visual>
+        </link>
+
+      </model>
+
+    <!-- <include>
+      <uri>model://landing_marker0</uri>
+      <name>marker0</name>
+      <pose>55 -55 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://landing_marker0</uri>
+      <name>marker1</name>
+      <pose>55 55 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://landing_marker0</uri>
+      <name>marker2</name>
+      <pose>-55 -55 0.1 0 0 0</pose>
+    </include> -->
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane1</uri>
+    </include>
+    <include>
+      <uri>model://road</uri>
+      <name>road1</name>
+      <pose>0 15 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://road</uri>
+      <name>road2</name>
+      <pose>0 -15 0.1 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://road</uri>
+      <name>road3</name>
+      <pose>15 0 0.1 0 0 1.57</pose>
+    </include>
+    <include>
+      <uri>model://road</uri>
+      <name>road4</name>
+      <pose>-15 0 0.1 0 0 1.57</pose>
+    </include>
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8066</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>10</iters>
+          <sor>1.3</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+    </physics>
+  </world>
+</sdf>

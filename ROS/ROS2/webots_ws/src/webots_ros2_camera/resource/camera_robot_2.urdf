@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="webots_camera_2">
+    <webots>
+        <plugin type="webots_ros2_camera.camera_driver.CameraDriver" />
+    </webots>
+</robot>

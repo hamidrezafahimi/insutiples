@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node name="impro" pkg="simulate" type="impro" output="screen"/>
+  <node name="dyncon" pkg="simulate" type="dyncon" />
+</launch>

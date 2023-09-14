@@ -1,0 +1,18 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.3340614747695354 -0.0839251688375852 0.9388074867140684 3.636767643088307
+  position 9.116189709673328 5.941927535378176 9.866640844809265
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 6 6
+  floorAppearance Grass {
+    type "mossy"
+  }
+  wallHeight 3
+}
