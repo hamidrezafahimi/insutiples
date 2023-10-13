@@ -10,6 +10,9 @@
 */ROS/ROS2/*/install/
 */ROS/ROS2/*/log/
 */ROS/ROS1/*/build/
+*install/
+*build/
+*log/
 */ROS/ROS1/*/devel/
 */webots/*/controllers
 */webots/*/libraries

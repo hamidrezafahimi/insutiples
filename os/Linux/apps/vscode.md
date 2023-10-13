@@ -78,7 +78,9 @@ There are two important files in `.vscode` folder in the root of the project. I 
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/include/opencv4/"
+                "/usr/local/include/opencv4/",
+                "${workspaceFolder}/../../dynamics/JSBSim_module/api/inc/",
+                "${workspaceFolder}/../../dynamics/JSBSim_module/lib/src/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
@@ -90,3 +92,5 @@ There are two important files in `.vscode` folder in the root of the project. I 
     "version": 4
 }
 ```
+
+The context of `includePath` simply includes all the directories which are `#include`d (except std libs i suppose ...)
