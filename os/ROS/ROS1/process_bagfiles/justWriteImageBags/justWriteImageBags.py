@@ -1,4 +1,4 @@
-import rospy
+#import rospy
 import rosbag
 
 # import sys
@@ -29,7 +29,7 @@ class ProcessImageBags:
         self._finished = False
         self.bridge = CvBridge()
         self._bagTopic = '/tello/camera/image_raw'
-        self.image_pub = rospy.Publisher('/test_frames', Image, queue_size=10)
+        #self.image_pub = rospy.Publisher('/test_frames', Image, queue_size=10)
         self._infoFileName = "/info.csv"
 
 
@@ -85,7 +85,7 @@ class ProcessImageBags:
             cv.imshow("published video", image)
             key = cv.waitKey(1)
             self.image_pub.publish(CvBridge().cv2_to_imgmsg(image, "bgr8"))
-            rospy.Rate(newRate).sleep()
+            #rospy.Rate(newRate).sleep()
 
             if key == ord('q'):
                 break
@@ -272,7 +272,7 @@ class ProcessImageBags:
         return path[0:end]
 
 
-rospy.init_node('test_node', anonymous=True)
+#rospy.init_node('test_node', anonymous=True)
 
 mv = ProcessImageBags()
 
@@ -286,4 +286,4 @@ elif args.mode == "show":
     mv.show(args.file)
 
 
-rospy.spin()
+#rospy.spin()
