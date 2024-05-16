@@ -47,3 +47,4 @@ log.*
 *.pdf
 *.gz
 *.toc
+*.swp
