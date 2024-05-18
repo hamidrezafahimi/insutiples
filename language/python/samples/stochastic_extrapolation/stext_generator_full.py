@@ -16,33 +16,42 @@ def calc_triangular_psi(p12d, p22d, p32d):
     return calc_2d_psi(p22d, p32d) - calc_2d_psi(p12d, p22d)
 
 
-def predict_linear_probs_1step(olpt, nwpt, dpsi, v_std_dev, beta_std_dev, K):
-    dt = (nwpt[0] - olpt[0])
+def predict_linear_probs_1step(olpt, nwpt, nxpt, v_std_dev, beta_std_dev, K):
+    dt = nwpt[0] - olpt[0]
+    old_point_2d = [olpt[1], olpt[2]]
+    new_point_2d = [nwpt[1], nwpt[2]]
+    psi = calc_2d_psi(old_point_2d, new_point_2d)
+    if nxpt is None:
+        dx2nxpt = 0
+        dy2nxpt = 0
+        psi_diff = 0
+    else:
+        next_point_2d = [nxpt[1], nxpt[2]]
+        dx2nxpt = nxpt[1] - nwpt[1]
+        dy2nxpt = nxpt[2] - nwpt[2]
+        psi_diff = calc_triangular_psi(old_point_2d, new_point_2d, next_point_2d)
+
+    psi_ = psi + psi_diff 
+    #print("----")
+    #print(olpt, nwpt, nxpt, dt)
+    #print(psi_diff, dx2nxpt, dy2nxpt)
+
     vx = (nwpt[1] - olpt[1]) / dt 
     vy = (nwpt[2] - olpt[2]) / dt
     v = np.sqrt(vx**2 + vy**2)
     vs = np.random.normal(v, v_std_dev, K)
-
     betas = np.random.normal(0, beta_std_dev, K)
-    olpt2d = [olpt[1], olpt[2]]
-    nwpt2d = [nwpt[1], nwpt[2]]
-    #psi_ = calc_2d_psi(olpt2d, nwpt2d)
-    #print("olpt: ", olpt)
-    #print("nwpt: ", nwpt)
-    psi = calc_2d_psi(olpt2d, nwpt2d)
-    if dpsi is None:
-        psi_ = psi
-    else:
-        psi_ = psi + dpsi
-    #print("psi_: ", psi_)
+
     prb_points = []
     for k in range(K):
         r = vs[k] * dt
         dx = r * np.cos(psi_ + betas[k])
+        #x = dx + nwpt[1] + dx2nxpt  
         x = dx + nwpt[1]
         dy = r * np.sin(psi_ + betas[k])
-        y = dy + nwpt[2]
-        t = dt + nwpt[0]
+        #y = dy + nwpt[2] + dy2nxpt  
+        y = dy + nwpt[2] 
+        t = dt + nwpt[0] 
         prb_points.append([t, x, y])
 
     if (K == 1):
@@ -62,9 +71,9 @@ def predict_linear_probs_recursive(parsed_data, v_std_dev=None, beta_std_dev=Non
     while True:
         if started:
             if parsed_data is None:
-                buffer, psi = None, None
+                buffer, nxp = None, None
             else:
-                buffer, psi = parsed_data
+                buffer, nxp = parsed_data
             if buffer is None:
                 #print ("buf is None")
                 ## No pose buffer. Extrapolate the last prob points for one step forward 
@@ -74,7 +83,7 @@ def predict_linear_probs_recursive(parsed_data, v_std_dev=None, beta_std_dev=Non
                     nwp = new_points[k, :]
                     npp = next_prob_points[k, :]
                     a_next_prob_point = predict_linear_probs_1step \
-                        (nwp, npp, psi, v_std_dev, beta_std_dev, 1)
+                        (nwp, npp, nxp, v_std_dev, beta_std_dev, 1)
                     nnpp.append([a_next_prob_point[0][0], a_next_prob_point[0][1], a_next_prob_point[0][2]])
                 new_points = []
                 new_points = np.array(copy.deepcopy(next_prob_points))
@@ -92,7 +101,7 @@ def predict_linear_probs_recursive(parsed_data, v_std_dev=None, beta_std_dev=Non
                     newpt = newpt1
                 else:
                     newpt = newpt1
-                next_prob_points = predict_linear_probs_1step(oldpt, newpt, psi, v_std_dev, beta_std_dev, K)
+                next_prob_points = predict_linear_probs_1step(oldpt, newpt, nxp, v_std_dev, beta_std_dev, K)
                 new_points = np.array([newpt for k in range(K)])
             #print(" ------ ")
             #print("(det) psi is: ", psi)
@@ -122,7 +131,7 @@ all_steps_num = 20
 
 v_std_dev = 0.5  # Velocity standard deviation
 beta_std_dev = 4 * np.pi / 180  # Beta (angle) standard deviation
-K = 50  # Number of probabilistic points
+K = 100  # Number of probabilistic points
 
 plt.xlabel('X')
 plt.ylabel('Y')
@@ -148,13 +157,9 @@ for n in range(1, all_steps_num):
         print("predicting for preferable psi and no pose buffer - indices: ", n, n - num_of_pose_buffer + 1)
         # This is when the buffer is gone and a deterministic extrapolation is to be preferred as: "The mean value for gaussian distribution of stochastic extrapolated points"
         # calc_2d_psi(next_xs[n - num_of_pose_buffer], next_ys[n - num_of_pose_buffer], next_xs[n - num_of_pose_buffer + 1], next_ys[n - num_of_pose_buffer + 1])
-        old_point_2d = [old_point[1], old_point[2]]
-        new_point_2d = [next_xs[n - num_of_pose_buffer], next_ys[n - num_of_pose_buffer]]
-        next_point_2d = [next_xs[n - num_of_pose_buffer + 1], next_ys[n - num_of_pose_buffer + 1]]
-        psi_diff = calc_triangular_psi(old_point_2d, new_point_2d, next_point_2d)
-        data = (None, psi_diff)
+        next_point = [next_ts[n - num_of_pose_buffer + 1], next_xs[n - num_of_pose_buffer + 1], next_ys[n - num_of_pose_buffer + 1]]
+        data = (None, next_point)
         prob_points = gen.send(data)
-        old_point = [0, new_point_2d[0], new_point_2d[1]] 
     elif (n < n_comeback):
         print("predicting linearly with no pose buffer - index: ", n)
         # This is when no deterministic preference is provided, thus extrapolating linearly around last measurements
@@ -183,3 +188,4 @@ for n in range(1, all_steps_num):
     plt.legend()
     plt.title(f'Probabilistic 2D Path Extrapolation ({n} steps)')
     plt.pause(2)
+
